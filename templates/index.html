@@ -10,12 +10,12 @@
     </head>
     <body>
     <h1>Signup</h1>
-    <form action='/user-signup' method='POST'>
+    <form action='/' method='POST'>
         <table>
             <tr>
                 <td><label for="username">Username</label></td>
                 <td>
-                    <input name="username" type="text" value='' />
+                    <input name="username" type="text" value='{{username}}' />
                     <span class="error">{{username_error}}</span>
                 </td>
             </tr>
@@ -30,13 +30,13 @@
                 <td><label for ="verify">Verify Password</label></td>
                 <td>
                     <input name="verify" type="password" />
-                    <span class="error">{{password_error}}</span>
+                    <span class="error">{{verify_error}}</span>
                 </td>
             </tr>
             <tr>
                 <td><label for="email">Email (optional)</label></td>
                 <td>
-                    <input name="email" type="text" value='' />
+                    <input name="email" type="text" value='{{email}}' />
                     <span class="error">{{email_error}}</span>
                 </td>
             </tr>
