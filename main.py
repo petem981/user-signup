@@ -53,14 +53,15 @@ def validate_form():
         email_error = ''
 
     if not username_error and not password_error and not verify_error and not email_error:
-        return redirect('/valid-form')
+        return redirect('/valid-form?username='+username)
     else:
         template = jinja_env.get_template('index.html')
         return template.render(username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error, username=username, password=password, verify=verify, email=email)
 
 @app.route('/valid-form', methods=['POST', 'GET'])
 def valid_form():
-    form = ''
-    return "<h1>WooHoo! You're all signed up!</h1>"
+    username = request.args.get('username')
+    template = jinja_env.get_template('welcome.html')
+    return template.render(username=username)
 
 app.run()
