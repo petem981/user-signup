@@ -42,15 +42,28 @@ def validate_form():
     if not 3 <= len(password) <= 20:
         password_error = 'Not a valid password, must be between 3-20 characters'
         password = ''
+    if len(email) <= 1:
+        email_error= ''
     if verify != password:
-        verify_error = "Oopsies! Your passwords don't match" 
+        verify_error = "Oopsies! Your passwords don't match"
+        verify = ''
     if " " in username:
         username_error = 'Not a valid username, cannot contain spaces'
         username = ''
-    if "@" not in email and ".com" not in email:
-        email_error = 'Not a valid email'
-    if email == "":
-        email_error = ''
+    if " " in password:
+        password_error = 'Not a valid password, cannot contain spaces'
+        password = ''
+    if len(email) >= 1:
+        if " " in email:
+            email_error = 'Not a valid email, cannot contain spaces'
+            email = ''
+        if "@" not in email:
+            email_error = 'Not a valid email'
+            email = ''
+        if "." not in email:
+            email_error = 'Not a valid email'
+            email = ''
+    
 
     if not username_error and not password_error and not verify_error and not email_error:
         return redirect('/valid-form?username='+username)
